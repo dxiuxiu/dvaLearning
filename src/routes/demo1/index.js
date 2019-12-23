@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 
 import {Switch } from 'antd'
+
 function Demo1() {
 
   function onChange(checked) {
