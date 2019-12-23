@@ -58,7 +58,6 @@ class TodoList extends React.Component {
    * @memberof App
    */
   add = (text) => {
-    console.log(text)
     this.props.add(text)
   }
 
@@ -154,8 +153,6 @@ TodoList.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  console.log(state)
-  console.log(ownProps)
   return {
     todoList: state.todoList
   }
