@@ -27,7 +27,7 @@ export default {
   ],
   reducers: {
     ADD (state, action) {
-      console.log(state,action)
+      // console.log(state,action)
       return [
         ...state,
         {
