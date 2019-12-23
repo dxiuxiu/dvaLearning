@@ -5,9 +5,9 @@ import NoMatch from './routes/noMatch'
 
 import IndexPage from './routes/IndexPage';
 import Demo1 from './routes/demo1/index'
-import TodoList from './routes/todoList/index'
+// import TodoList from './routes/todoList/index'
 
-// import TodoList from './routes/todoList' [app.router] router should be function, but got object
+import TodoList from './routes/todoList' // [app.router] router should be function, but got object
 
 function RouterConfig({ history,app }) {
   // console.log(history)
