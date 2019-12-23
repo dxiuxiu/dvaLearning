@@ -1,7 +1,8 @@
 import { listStatus } from '../constants/todoList'
 
+export const todoList = 'todoList'
 export default {
-  namespace: 'todoList',
+  namespace:todoList,
   state: [
     {
       id: 0.186864004695098,
@@ -25,7 +26,7 @@ export default {
     }
   ],
   reducers: {
-    'ADD'(state, action) {
+    ADD (state, action) {
       console.log(state,action)
       return [
         ...state,
@@ -36,7 +37,7 @@ export default {
         }
       ]
     },
-    'DONE'(state,action) {
+    DONE (state,action) {
       return state.map(item => {
         if (item.id === action.id) {
           item.status = listStatus.DONE
@@ -44,7 +45,7 @@ export default {
         return item
       })
     },
-    'WILLDO'(state,action) {
+    WILLDO (state,action) {
       return state.map(item => {
         if (item.id === action.id) {
           item.status = listStatus.WILLDO
@@ -52,7 +53,7 @@ export default {
         return item
       })
     },
-    'DEL'(state,action) {
+    DEL (state,action) {
       return state.filter(item => item.id !== action.id)
     }
   },

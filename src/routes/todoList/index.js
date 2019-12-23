@@ -18,14 +18,14 @@
 
 
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import WillDo from '../../components/todoList/willDo'
 import Done from '../../components/todoList/done'
 
 import { listStatus } from '../../constants/todoList'
 
-import { willToDone, doneToWill,del, add } from '../../actions/todoList'
+import { willToDone, doneToWill, del, add } from '../../actions/todoList'
 
 class TodoList extends React.Component {
   input // 输入框
@@ -145,13 +145,13 @@ class TodoList extends React.Component {
 }
 
 
-// TodoList.propTypes = {
-//   todoList: PropTypes.array.isRequired,
-//   add: PropTypes.func.isRequired,
-//   del: PropTypes.func.isRequired,
-//   doneToWill: PropTypes.func.isRequired,
-//   willToDone: PropTypes.func.isRequired,
-// };
+TodoList.propTypes = {
+  todoList: PropTypes.array.isRequired,
+  add: PropTypes.func.isRequired,
+  del: PropTypes.func.isRequired,
+  doneToWill: PropTypes.func.isRequired,
+  willToDone: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state, ownProps) {
   console.log(state)
@@ -172,8 +172,12 @@ function mapDispatchToProps(dispatch, ownProps) {
       dispatch(doneToWill(id))
     },
     add: (text) => {
-      console.log('dispatch', text)
+      // console.log('dispatch', text)
       dispatch(add(text))
+      // dispatch({
+      //   type: 'todoList/ADD',
+      //   text,
+      // })
     }
   }
 }

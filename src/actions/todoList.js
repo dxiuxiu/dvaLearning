@@ -1,13 +1,14 @@
 import {actionType,listStatus}  from '../constants/todoList'
 
+import {todoList} from '../models/todoList'
 /**
  * @desc 将列表状态修改为已完成
  *
 */
 export const willToDone = (id) => {
   return {
-      type: actionType.DONE,
-      // type: `todoList${actionType.DONE}`,
+      // type: actionType.DONE,
+      type: `${todoList}/${actionType.DONE}`,
       id,
   }
 }
@@ -18,8 +19,8 @@ export const willToDone = (id) => {
 */
 export const doneToWill = (id) => {
   return {
-      type: actionType.WILLDO,
-      // type: `todoList${actionType.WILLDO}`,
+      // type: actionType.WILLDO,
+      type: `${todoList}/${actionType.WILLDO}`,
       id,
   }
 }
@@ -28,10 +29,9 @@ export const doneToWill = (id) => {
 *
 */
 export const add = (text) => {
-  console.log('add action content', text)
   return {
-      type: actionType.ADD,
-      // type: `todoList${actionType.ADD}`,
+      // type: actionType.ADD,
+      type: `${todoList}/${actionType.ADD}`,
       id: Math.random(),
       text,
       status: listStatus.WILLDO
@@ -43,8 +43,8 @@ export const add = (text) => {
 */
 export const del = (id) => {
   return {
-      type: actionType.DEL,
-      // type: `todoList${actionType.DEL}`,
+      // type: actionType.DEL,
+      type: `${todoList}/${actionType.DEL}`,
       id,
   }
 }
