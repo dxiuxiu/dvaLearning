@@ -1,7 +1,7 @@
 import { connect } from 'dva'
 
-import { willToDone, doneToWill, del, add } from '../../actions/todoList'
-import  TodoList from '../../components/todoList'
+import { willToDone, doneToWill, del, add ,addAsync} from '../../actions/todoList'
+import TodoList from '../../components/todoList'
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -21,10 +21,14 @@ function mapDispatchToProps(dispatch, ownProps) {
     },
     add: (text) => {
       // console.log('dispatch', text)
-      dispatch(add(text))
+      // dispatch(add(text))
+      dispatch(addAsync(text))
+
       // dispatch({
-      //   type: 'todoList/ADD',
+      //   type: 'todoList/addAsync',
+      //   id: Math.random(),
       //   text,
+      //   status: 'WILLDO'
       // })
     }
   }

@@ -6,11 +6,13 @@ const ADD = 'ADD'
 
 const DEL = 'DEL'
 
+const addAsync = 'addAsync'
 const actionType = {
    DONE,
    WILLDO,
    ADD,
-   DEL
+   DEL,
+   addAsync
 }
 
 const listStatus = {

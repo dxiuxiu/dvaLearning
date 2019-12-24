@@ -48,3 +48,14 @@ export const del = (id) => {
       id,
   }
 }
+
+export const addAsync = (text) =>{
+  return {
+    // type: 'todoList/addAsync',
+    type: `${todoList}/${actionType.addAsync}`,
+    id: Math.random(),
+    text,
+    status: listStatus.WILLDO
+
+  }
+}

@@ -1,8 +1,10 @@
-import { listStatus } from '../constants/todoList'
+import { listStatus,actionType } from '../constants/todoList'
+import { asyncAdd } from '../services/todoList'
 
 export const todoList = 'todoList'
+
 export default {
-  namespace:todoList,
+  namespace: todoList,
   state: [
     {
       id: 0.186864004695098,
@@ -26,7 +28,7 @@ export default {
     }
   ],
   reducers: {
-    ADD (state, action) {
+    ADD(state, action) {
       // console.log(state,action)
       return [
         ...state,
@@ -37,7 +39,7 @@ export default {
         }
       ]
     },
-    DONE (state,action) {
+    DONE(state, action) {
       return state.map(item => {
         if (item.id === action.id) {
           item.status = listStatus.DONE
@@ -45,7 +47,7 @@ export default {
         return item
       })
     },
-    WILLDO (state,action) {
+    WILLDO(state, action) {
       return state.map(item => {
         if (item.id === action.id) {
           item.status = listStatus.WILLDO
@@ -53,8 +55,29 @@ export default {
         return item
       })
     },
-    DEL (state,action) {
+    DEL(state, action) {
       return state.filter(item => item.id !== action.id)
     }
   },
+  effects: {
+    /**
+     * *(action, effects) => void
+     * 或
+     * [*(action, effects) => void, { type }]
+     */
+    *addAsync(action, effects) {
+      // console.log(action)
+      const result = yield effects.call(asyncAdd, action.text)
+      // console.log(result)
+      yield effects.put({
+        type:`${todoList}/${actionType.ADD}`,
+        id: action.id,
+        text: result,
+        status: action.status
+      })
+    }
+  },
+  subscriptions: {
+
+  }
 };
