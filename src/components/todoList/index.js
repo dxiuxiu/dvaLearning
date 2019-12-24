@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import WillDo from '../../components/todoList/willDo'
 import Done from '../../components/todoList/done'
 import { listStatus } from '../../constants/todoList'
+import { Spin } from 'antd'
 
 
 export default class TodoList extends React.Component {
@@ -102,22 +103,29 @@ export default class TodoList extends React.Component {
   }
 
   render() {
+    // console.log(this.props.loading)
+    // console.log(this.props.loading.effects['todoList/addAsync'])
+
+    const loading = this.props.loading.effects['todoList/addAsync']
+    // console.log(loading)
     return (
-      <div>
-        <h1>todoList</h1>
-        <input type="text" placeholder="请输入"
-          ref={input => this.input = input}
-          // onChange={() => { console.log(this.input.value) }}
-          onKeyPress={this.handleEnterKey} />
-        <section>
-          <h3>待完成</h3>
-          {this.createWillDo()}
-        </section>
-        <section>
-          <h3>已完成</h3>
-          {this.createDone()}
-        </section>
-      </div>
+      <Spin spinning={!!loading}>
+        <div>
+          <h1>todoList</h1>
+          <input type="text" placeholder="请输入"
+            ref={input => this.input = input}
+            // onChange={() => { console.log(this.input.value) }}
+            onKeyPress={this.handleEnterKey} />
+          <section>
+            <h3>待完成</h3>
+            {this.createWillDo()}
+          </section>
+          <section>
+            <h3>已完成</h3>
+            {this.createDone()}
+          </section>
+        </div>
+      </Spin>
     )
   }
 }

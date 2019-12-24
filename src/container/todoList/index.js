@@ -4,8 +4,10 @@ import { willToDone, doneToWill, del, add ,addAsync} from '../../actions/todoLis
 import TodoList from '../../components/todoList'
 
 function mapStateToProps(state, ownProps) {
+  // console.log(state)
   return {
-    todoList: state.todoList
+    todoList: state.todoList,
+    loading:state.loading
   }
 }
 function mapDispatchToProps(dispatch, ownProps) {
